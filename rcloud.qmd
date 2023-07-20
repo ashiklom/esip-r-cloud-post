@@ -1,0 +1,45 @@
+---
+title: "Cloud-native geospatial in R"
+format:
+  html:
+---
+
+# Introduction
+
+The Python ecosystem for open-source cloud native geospatial is top-notch and getting better all the time.
+Analysis libraries like `xarray` and `pandas` work very well with file format drivers from the likes of `zarr` and `rasterio` and storage and computing abstraction libraries like `dask` and `fsspec`.
+
+But what if you don't speak Python (or prefer not to)?
+We brainstormed this question at an Unconference session of the ESIP Summer 2023 meeting in Burlington, VT.
+When I organized this discussion, I was pessimistic and prepared for a long list of issues and development priorities.
+But after ~90 minutes of discussion, I came out energized and optimistic by what is already possible and some ongoing efforts.
+
+Without further ado, here's what we learned!
+
+# What works well now?
+
+The best way to demonstrate what is already possible is with some real-world examples!
+
+## Environment management
+
+- Conda
+
+- Rocker 
+- GitHub CodeSpaces
+- Podman
+
+# What exciting new stuff is on the horizon? 
+
+# What needs work?
+
+So, where should we prioritize development in the R cloud-native geospatial community?
+
+The most important deliverable
+
+One area we identified was the **lack of low-level GDAL bindings in R**.
+Existing R libraries for raster analysis, like `terra` and `GDALcubes`, do a nice job of simplifying GDAL calls for common operations.
+However, for more advanced analyses, it is often useful to have direct access to specific GDAL functions and classes.
+For example, in Python, direct GDAL bindings are implemented using SWIG, and other libraries like `rasterio` provide higher-level functionality around those code Python bindings.
+Similarly, Julia provides low-level GDAL wrappers in `GDAL.jl`, and these bindings are called by higher-level libraries like `ArchGDAL.jl`.
+In R, historically, these bindings were provided by `rgdal`, but the community has recently shifted to higher-level libraries like `terra` and `sf` that link directly against GDAL while providing higher-level functionality.
+To fully exploit new and advanced GDAL features, the R community should consider developing and maintaining a dedicated low-level package specifically for GDAL bindings and build higher-level functionality around 
